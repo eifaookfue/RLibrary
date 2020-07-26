@@ -14,6 +14,12 @@ DFtokyo <- read.table("20200519_Presentation/data/TokyoSTAT.csv", sep=",", heade
 str(DFtokyo)
 ```
 
+### 8列目までを分析対象とする
+
+```
+DFtokyo <- DFtokyo[,1:8]
+```
+
 ### 文字化けを防ぐためカラム名変更
 
 ```
@@ -147,6 +153,12 @@ text(result.fa$loadings[,1], result.fa$loadings[,3], rownames(result.fa$loadings
 
 ```
 head(result.fa$scores)
+```
+
+### 行の名前を変換
+
+```
+rownames(DFfa) <- DFtokyo$市町村
 ```
 
 ### 因子得点をデータフレームに変換
