@@ -46,7 +46,7 @@ library(qgraph)
 qgraph(COR,minimum=.20,edge.labels=T,label.scale=F,label.cex=0.8,edge.label.cex=1.4)
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\qgraph.png)
+![](C:\img\qgraph.png)
 
 ### 転出者_対人口比と世帯当たり人数の相関があったのかなぜだか知りたかったので転出者_対人口比がどんな数値だか見てみる
 
@@ -54,7 +54,7 @@ qgraph(COR,minimum=.20,edge.labels=T,label.scale=F,label.cex=0.8,edge.label.cex=
 ggplot(DFCity, aes(x=reorder(市町村,転出者_対人口比), y=転出者_対人口比, fill=市町村)) + geom_bar(stat="identity")
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\転出者_対人口比_legendソート前.png)
+![](C:\img\転出者_対人口比_legendソート前.png)
 
 これだとlegendがソートされない。そこで
 
@@ -71,7 +71,7 @@ ggplot(DFCity, aes(x=市町村_転出者, y=転出者_対人口比, fill=市町�
 ```
 ヘルプをみるとわかるが、stat="identity"をつけないとケース数になってしまう。geom_barの代わりにgeom_col()を用いてもいい
 
-![](C:\Users\user\Documents\20200519_Presentation\img\転出者_対人口比_legendソート後.png)
+![](C:\img\転出者_対人口比_legendソート後.png)
 
 ### 世帯あたり人数を棒グラフでみてみる
 
@@ -83,7 +83,7 @@ DFCity$市町村_世帯あたり人数 <- with(DFCity, reorder(市町村, 世帯
 ggplot(DFCity, aes(x=市町村_世帯あたり人数, y=世帯あたり人数, fill=市町村_世帯あたり人数)) + geom_bar(stat="identity")
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\世帯あたり人数.png)
+![](C:\img\世帯あたり人数.png)
 
 ### 平行分析で因子数を見積もる
 
@@ -95,7 +95,7 @@ library(psych)
 fa.parallel(DFCity[,-c(1:2)])
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\ParallelAnalysis.png)
+![](C:\img\ParallelAnalysis.png)
 
 ### 因子分析の実行
 
@@ -115,7 +115,7 @@ print(result.fa, digits = 2, sort = TRUE)
 fa.diagram(result.fa)
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\factor_analysis.png)
+![](C:\img\factor_analysis.png)
 
 ### 因子負荷量
 
@@ -127,7 +127,7 @@ plot(result.fa$loadings[,1], result.fa$loadings[,2], type="n")
 text(result.fa$loadings[,1], result.fa$loadings[,2], rownames(result.fa$loadings))
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\因子負荷量1_2.png)
+![](C:\img\因子負荷量1_2.png)
 
 ```
 plot(result.fa$loadings[,2], result.fa$loadings[,3], type="n")
@@ -137,7 +137,7 @@ plot(result.fa$loadings[,2], result.fa$loadings[,3], type="n")
 text(result.fa$loadings[,2], result.fa$loadings[,3], rownames(result.fa$loadings))
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\因子負荷量2_3.png)
+![](C:\img\因子負荷量2_3.png)
 
 ```
 plot(result.fa$loadings[,1], result.fa$loadings[,3], type="n")
@@ -147,7 +147,7 @@ plot(result.fa$loadings[,1], result.fa$loadings[,3], type="n")
 text(result.fa$loadings[,1], result.fa$loadings[,3], rownames(result.fa$loadings))
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\因子負荷量1_3.png)
+![](C:\img\因子負荷量1_3.png)
 
 ### 因子得点の確認
 
@@ -242,7 +242,7 @@ plot(DFfa[, 1], DFfa[, 2], type="n", xlab="郊外生活度", ylab="経済活性�
 text(DFfa[, 1], DFfa[, 2], rownames(DFfa), col=color.km)
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\因子得点1_2.png)
+![](C:\img\因子得点1_2.png)
 
 ```
 plot(DFfa[, 1], DFfa[, 3], type="n", xlab="郊外生活度", ylab="高齢化度")
@@ -252,7 +252,7 @@ plot(DFfa[, 1], DFfa[, 3], type="n", xlab="郊外生活度", ylab="高齢化度"
 text(DFfa[, 1], DFfa[, 3], rownames(DFfa), col=color.km)
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\因子得点1_3.png)
+![](C:\img\因子得点1_3.png)
 
 ```
 plot(DFfa[, 2], DFfa[, 3], type="n", xlab="経済活性度", ylab="高齢化度")
@@ -262,7 +262,7 @@ plot(DFfa[, 2], DFfa[, 3], type="n", xlab="経済活性度", ylab="高齢化度"
 text(DFfa[, 2], DFfa[, 3], rownames(DFfa), col=color.km)
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\因子得点2_3.png)
+![](C:\img\因子得点2_3.png)
 
 ### 元のデータに因子得点とクラスタ番号を付加
 
@@ -469,7 +469,7 @@ DFAll$行政CD <- NULL
 hist(DFAll$取引価格,breaks=100, main="取引価格の分布")
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\取引価格の分布.png)
+![](C:\img\取引価格の分布.png)
 
 ### 常用対数ヒストグラム
 
@@ -477,7 +477,7 @@ hist(DFAll$取引価格,breaks=100, main="取引価格の分布")
 hist(log10(DFAll$取引価格),breaks=100, main="取引価格の分布")
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\Log取引価格の分布.png)
+![](C:\img\Log取引価格の分布.png)
 
 ### 面積と取引価格の散布図
 
@@ -485,7 +485,7 @@ hist(log10(DFAll$取引価格),breaks=100, main="取引価格の分布")
 plot(DFAll$面積m2, DFAll$取引価格)
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\面積vs取引価格.png)
+![](C:\img\面積vs取引価格.png)
 
 
 ```
@@ -496,13 +496,13 @@ library(ggplot2)
 ggplot(DFAll, aes(x = 面積m2, y = 取引価格)) + geom_point(aes(colour=建築年), alpha=0.7) + labs(colour="建築年") + ggtitle("面積と価格")
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\面積vs取引価格g.png)
+![](C:\img\面積vs取引価格g.png)
 
 ```
 ggplot(DFAll, aes(x = log10(面積m2), y = log10(取引価格))) + geom_point(aes(colour=建築年), alpha=0.7) + labs(colour="建築年") + ggtitle("面積と価格")
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\Log面積vs取引価格g.png)
+![](C:\img\Log面積vs取引価格g.png)
 
 
 
@@ -513,7 +513,7 @@ DFAll$築年数 <- DFAll$取引年 - DFAll$建築年
 hist(DFAll$築年数, breaks=100, main="取引物件の築年数", xlab="築年数")
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\取引物件の築年数.png)
+![](C:\img\取引物件の築年数.png)
 
 ### 築年数と価格
 
@@ -521,13 +521,13 @@ hist(DFAll$築年数, breaks=100, main="取引物件の築年数", xlab="築年�
 ggplot(DFAll, aes(x = 築年数, y = 取引価格)) + geom_point(aes(colour=面積m2), alpha=0.7) + ggtitle("築年数と価格") + theme(plot.title = element_text(hjust = 0.5))
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\築年数と価格.png)
+![](C:\img\築年数と価格.png)
 
 ```
 ggplot(DFAll, aes(x = log10(築年数), y = log10(取引価格))) + geom_point(aes(colour=面積m2), alpha=0.7) + ggtitle("築年数と価格") + theme(plot.title = element_text(hjust = 0.5))
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\Log築年数と価格.png)
+![](C:\img\Log築年数と価格.png)
 
 ### 面積単価を求める
 
@@ -541,19 +541,19 @@ DFAll$面積単価 <- DFAll$取引価格/DFAll$面積m2
 ggplot(DFAll, aes(x = Longit, y = Latit)) + geom_point(aes(colour=as.factor(clusterNo), size=面積単価), alpha=0.7) + ggtitle("緯度・経度によるプロット") + xlab("経度") + ylab("緯度") + theme(plot.title = element_text(hjust = 0.5))
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\緯度・経度によるプロット1.png)
+![](C:\img\緯度・経度によるプロット1.png)
 
 ```
 ggplot(DFAll, aes(x = Longit, y = Latit)) + geom_point(aes(colour=取引価格, size=面積単価), alpha=0.7) + ggtitle("緯度・経度によるプロット") + xlab("経度") + ylab("緯度") + theme(plot.title = element_text(hjust = 0.5))
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\緯度・経度によるプロット2.png)
+![](C:\img\緯度・経度によるプロット2.png)
 
 ```
 boxplot(log10(DFAll$面積単価) ~ DFAll$clusterNo, main="市区町村クラスタごとの面積単価(対数)")
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\boxplot1.png)
+![](C:\img\boxplot1.png)
 
 ```
 DFAll$間取り <- as.character(DFAll$間取り)
@@ -563,10 +563,10 @@ DFAll$間取り <- as.character(DFAll$間取り)
 boxplot(log10(DFAll$面積単価) ~ DFAll$間取り, main="間取り別の面積単価(対数)")
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\boxplot2.png)
+![](C:\img\boxplot2.png)
 
 ```
 boxplot(log10(DFAll$面積単価) ~ DFAll$RailCo, main="鉄道会社別の面積単価(対数)", xlab="", las=2)
 ```
 
-![](C:\Users\user\Documents\20200519_Presentation\img\boxplot3.png)
+![](C:\img\boxplot3.png)
